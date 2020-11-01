@@ -1,0 +1,25 @@
+version: "3.3"
+services:
+  api:
+    container_name: api
+    build:
+      context: ./api
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./api:/app"
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: Postgres
+    environment:
+      - POSTGRES_PASSWORD=12345678
+      - POSTGRES_USER=dev
+    ports:
+      - "5432:5432"
+    volumes:
+       - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
