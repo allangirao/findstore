@@ -5,9 +5,17 @@ services:
     build:
       context: ./api
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - "./api:/app"
+  web:
+    container_name: web
+    build:
+      context: ./web
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./web:/app"
   db:
     container_name: db
     build:
