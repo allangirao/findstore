@@ -1,3 +1,3 @@
-import StoreMarker from './store'
+import StoreMarker from './Store'
 
 export { StoreMarker }

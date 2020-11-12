@@ -1,10 +1,10 @@
 import React from 'react'
 import L from 'leaflet'
 import { Marker, Popup } from 'react-leaflet'
-import icon from '../../assets/coffee-cup.png'
+import StoreDetail from '../StoreDetail'
 
 const iconCoffeeCup = new L.Icon({
-    iconUrl: icon,
+    iconUrl: '/images/coffee-cup.png',
     // point of the icon which will correspond to marker's location
     // Centered by default if size is specified, also can be set in CSS with negative margins.
     // iconAnchor: new L.Point(-12, -12),
@@ -16,9 +16,9 @@ const iconCoffeeCup = new L.Icon({
 });
 
 const StorePopup = props => {
-  const { name = null } = props
+  const { store = {} } = props
   return (
-    <Popup>{name}</Popup>
+    <Popup><StoreDetail store={store} /></Popup>
   )
 }
 
@@ -28,7 +28,7 @@ const StoreMarker = (props) => {
 
   return (
     <Marker position={[lat, lon]} icon={iconCoffeeCup}>
-      <StorePopup {...tags} />
+      <StorePopup store={data} />
     </Marker>
   )
 }
